@@ -27,8 +27,6 @@ Java作为一种面向对象语言。支持以下基本概念：
 
 ## Java中的对象
 
-
-
 现在让我们深入了解什么是对象。看看周围真实的世界，会发现身边有很多对象，车，狗，人等等。所有这些对象都有自己的状态和行为。
 
 拿一条狗来举例，它的状态有：名字、品种、颜色，行为有：叫、摇尾巴和跑。
@@ -126,7 +124,7 @@ public class Puppy{
 
 通过已创建的对象来访问成员变量和成员方法，如下所示：
 
-```
+```java
 /* 实例化对象 */
 Object referenceVariable = new Constructor();
 /* 访问类中的变量 */
@@ -171,6 +169,8 @@ public class Puppy{
 
 编译并运行上面的程序，产生如下结果：
 
+![image-20201127214102913](../Product/ComputerBasic/00Java基础/Images/image-20201127214102913.png)
+
 ## 源文件声明规则
 
 在本节的最后部分，我们将学习源文件的声明规则。当在一个源文件中定义多个类，并且还有import语句和package语句时，要特别注意这些规则。
@@ -184,7 +184,7 @@ public class Puppy{
 
 类有若干种访问级别，并且类也分不同的类型：抽象类和 final 类等。这些将在访问控制章节介绍。
 
-除了上面提到的几种类型，Java 还有一些特殊的类，如：[内部类](https://www.runoob.com/java/java-inner-class.html)、[匿名类](https://www.runoob.com/java/java-anonymous-class.html)。
+除了上面提到的几种类型，Java 还有一些特殊的类，如：内部类、匿名类。
 
 ## Java 包
 
@@ -210,7 +210,7 @@ Employee 类有四个成员变量：name、age、designation 和 salary。该类
 
 ##### Employee.java 文件代码：
 
-```
+```java
 import java.io.*;
  
 public class Employee{
@@ -252,7 +252,7 @@ public class Employee{
 
 ##### EmployeeTest.java 文件代码：
 
-```
+```java
 import java.io.*;
 public class EmployeeTest{
  
@@ -277,3 +277,4 @@ public class EmployeeTest{
 
 编译这两个文件并且运行 EmployeeTest 类，可以看到如下结果：
 
+![image-20201127215445466](../Product/ComputerBasic/00Java基础/Images/image-20201127215445466.png)
