@@ -2,9 +2,11 @@
 
 一般地，当需要使用数字的时候，我们通常使用内置数据类型，如：**byte、int、long、double** 等。
 
-## 实例
-
-int a = 5000; float b = 13.65f; byte c = 0x4a;
+```java
+int a = 5000;
+float b = 13.65f;
+byte c = 0x4a;
+```
 
 然而，在实际开发过程中，我们经常会遇到需要使用对象，而不是内置数据类型的情形。为了解决这个问题，Java 语言为每一个内置数据类型提供了对应的包装类。
 
@@ -21,15 +23,22 @@ int a = 5000; float b = 13.65f; byte c = 0x4a;
 | Float     | float        |
 | Double    | double       |
 
-![Java Number类](https://www.runoob.com/wp-content/uploads/2013/12/OOP_WrapperClass.png)
+![Java Number类](../Product/ComputerBasic/00Java基础/Images/OOP_WrapperClass.png)
 
 这种由编译器特别支持的包装称为装箱，所以当内置数据类型被当作对象使用的时候，编译器会把内置类型装箱为包装类。相似的，编译器也可以把一个对象拆箱为内置类型。Number 类属于 java.lang 包。
 
 下面是一个使用 Integer 对象的实例：
 
-## Test.java 文件代码：
-
-public class Test{    public static void main(String args[]){      Integer x = 5;      x =  x + 10;      System.out.println(x);    } }
+```java
+public class Test{
+ 
+   public static void main(String args[]){
+      Integer x = 5;
+      x =  x + 10;
+      System.out.println(x); 
+   }
+}
+```
 
 以上实例编译运行结果如下：
 
@@ -47,9 +56,19 @@ Java 的 Math 包含了用于执行基本数学运算的属性和方法，如初
 
 Math 的方法都被定义为 static 形式，通过 Math 类可以在主函数中直接调用。
 
-## Test.java 文件代码：
-
-public class Test {      public static void main (String []args)      {          System.out.println("90 度的正弦值：" + Math.sin(Math.PI/2));          System.out.println("0度的余弦值：" + Math.cos(0));          System.out.println("60度的正切值：" + Math.tan(Math.PI/3));          System.out.println("1的反正切值： " + Math.atan(1));          System.out.println("π/2的角度值：" + Math.toDegrees(Math.PI/2));          System.out.println(Math.PI);      }   }
+```java
+public class Test {  
+    public static void main (String []args)  
+    {  
+        System.out.println("90 度的正弦值：" + Math.sin(Math.PI/2));  
+        System.out.println("0度的余弦值：" + Math.cos(0));  
+        System.out.println("60度的正切值：" + Math.tan(Math.PI/3));  
+        System.out.println("1的反正切值： " + Math.atan(1));  
+        System.out.println("π/2的角度值：" + Math.toDegrees(Math.PI/2));  
+        System.out.println(Math.PI);  
+    }  
+}
+```
 
 以上实例编译运行结果如下：
 
@@ -113,7 +132,22 @@ public class Test {      public static void main (String []args)      {         
 
 ## floor,round 和 ceil 实例：
 
-public class Main {     public static void main(String[] args) {       double[] nums = { 1.4, 1.5, 1.6, -1.4, -1.5, -1.6 };       for (double num : nums) {         test(num);       }     }       private static void test(double num) {       System.out.println("Math.floor(" + num + ")=" + Math.floor(num));       System.out.println("Math.round(" + num + ")=" + Math.round(num));       System.out.println("Math.ceil(" + num + ")=" + Math.ceil(num));     }    }
+```java
+public class Main {   
+  public static void main(String[] args) {   
+    double[] nums = { 1.4, 1.5, 1.6, -1.4, -1.5, -1.6 };   
+    for (double num : nums) {   
+      test(num);   
+    }   
+  }   
+  
+  private static void test(double num) {   
+    System.out.println("Math.floor(" + num + ")=" + Math.floor(num));   
+    System.out.println("Math.round(" + num + ")=" + Math.round(num));   
+    System.out.println("Math.ceil(" + num + ")=" + Math.ceil(num));   
+  }   
+}
+```
 
 以上实例执行输出结果为：
 
