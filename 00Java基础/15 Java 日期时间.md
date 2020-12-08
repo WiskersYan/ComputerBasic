@@ -4,13 +4,13 @@ java.util 包提供了 Date 类来封装当前的日期和时间。 Date 类提�
 
 第一个构造函数使用当前日期和时间来初始化对象。
 
-```
+```java
 Date( )
 ```
 
 第二个构造函数接收一个参数，该参数是从1970年1月1日起的毫秒数。
 
-```
+```java
 Date(long millisec)
 ```
 
@@ -35,7 +35,7 @@ Date对象创建以后，可以调用下面的方法。
 
 Java中获取当前日期和时间很简单，使用 Date 对象的 toString() 方法来打印当前日期和时间，如下所示：
 
-```
+```java
 import java.util.Date;
   
 public class DateDemo {
@@ -49,13 +49,10 @@ public class DateDemo {
 }
 ```
 
-
-[运行实例 »](https://www.runoob.com/try/runcode.php?filename=date_demo&type=java)
-
 以上实例编译运行结果如下:
 
 ```
-Mon May 04 09:51:52 CDT 2013
+Tue Dec 08 22:40:19 CST 2020
 ```
 
 ------
@@ -65,23 +62,55 @@ Mon May 04 09:51:52 CDT 2013
 Java使用以下三种方法来比较两个日期：
 
 - 使用 getTime() 方法获取两个日期（自1970年1月1日经历的毫秒数值），然后比较这两个值。
+
 - 使用方法 before()，after() 和 equals()。例如，一个月的12号比18号早，则 new Date(99, 2, 12).before(new Date (99, 2, 18)) 返回true。
+
 - 使用 compareTo() 方法，它是由 Comparable 接口定义的，Date 类实现了这个接口。
 
-------
+  ```java
+  import java.util.Date;
+  
+  public class lesson015 {
+      public static void main (String[] args) {
+          Date date = new Date();
+          System.out.println(date.toString());
+          System.out.println(date.after(new Date(20,12,7)));
+          System.out.println(date.before(new Date(20,12,7)));
+          System.out.println(date.equals(new Date(20,12,7)));
+          System.out.println(date.compareTo(new Date(20,12,7)));
+      }
+  }
+  
+  ```
+
+```
+Tue Dec 08 22:45:02 CST 2020
+true
+false
+false
+1
+```
 
 ## 使用 SimpleDateFormat 格式化日期
 
 SimpleDateFormat 是一个以语言环境敏感的方式来格式化和分析日期的类。SimpleDateFormat 允许你选择任何用户自定义日期时间格式来运行。例如：
 
-## 实例
-
-import  java.util.*; import java.text.*;  public class DateDemo {   public static void main(String args[]) {       Date dNow = new Date( );      SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");       System.out.println("当前时间为: " + ft.format(dNow));   } }
-
-
-[运行实例 »](https://www.runoob.com/try/runcode.php?filename=date_demo1&type=java)
-
+```java
+mport  java.util.*;
+import java.text.*;
+ 
+public class DateDemo {
+   public static void main(String args[]) {
+ 
+      Date dNow = new Date( );
+      SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
+ 
+      System.out.println("当前时间为: " + ft.format(dNow));
+   }
+}
 ```
+
+```java
 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
 ```
 
@@ -139,13 +168,30 @@ printf 方法可以很轻松地格式化时间和日期。使用两个字母格�
 | T        | "HH:MM:SS"格式（24时制）    | 14:28:16                         |
 | R        | "HH:MM"格式（24时制）       | 14:28                            |
 
-更多 **printf** 解析可以参见：[Java 格式化输出 printf 例子](https://www.runoob.com/w3cnote/java-printf-formate-demo.html)
-
-### 实例
-
-## 实例
-
-import java.util.Date;  public class DateDemo {   public static void main(String args[]) {     // 初始化 Date 对象     Date date = new Date();      //c的使用      System.out.printf("全部日期和时间信息：%tc%n",date);              //f的使用      System.out.printf("年-月-日格式：%tF%n",date);      //d的使用      System.out.printf("月/日/年格式：%tD%n",date);      //r的使用      System.out.printf("HH:MM:SS PM格式（12时制）：%tr%n",date);      //t的使用      System.out.printf("HH:MM:SS格式（24时制）：%tT%n",date);      //R的使用      System.out.printf("HH:MM格式（24时制）：%tR",date);    } }
+```java
+import java.util.Date;
+ 
+public class DateDemo {
+ 
+  public static void main(String args[]) {
+     // 初始化 Date 对象
+     Date date = new Date();
+ 
+     //c的使用  
+    System.out.printf("全部日期和时间信息：%tc%n",date);          
+    //f的使用  
+    System.out.printf("年-月-日格式：%tF%n",date);  
+    //d的使用  
+    System.out.printf("月/日/年格式：%tD%n",date);  
+    //r的使用  
+    System.out.printf("HH:MM:SS PM格式（12时制）：%tr%n",date);  
+    //t的使用  
+    System.out.printf("HH:MM:SS格式（24时制）：%tT%n",date);  
+    //R的使用  
+    System.out.printf("HH:MM格式（24时制）：%tR",date);  
+  }
+}
+```
 
 以上实例编译运行结果如下:
 
@@ -158,16 +204,25 @@ HH:MM:SS格式（24时制）：10:43:36
 HH:MM格式（24时制）：10:43  
 ```
 
-如果你需要重复提供日期，那么利用这种方式来格式化它的每一部分就有点复杂了。因此，可以利用一个格式化字符串指出要被格式化的参数的索引。
+如果需要重复提供日期，那么利用这种方式来格式化它的每一部分就有点复杂了。因此，可以利用一个格式化字符串指出要被格式化的参数的索引。
 
 索引必须紧跟在%后面，而且必须以$结束。例如：
 
-## 实例
-
-import java.util.Date;   public class DateDemo {    public static void main(String args[]) {       // 初始化 Date 对象       Date date = new Date();               // 使用toString()显示日期和时间       System.out.printf("%1$s %2$tB %2$td, %2$tY",                          "Due date:", date);   } }
-
-
-[运行实例 »](https://www.runoob.com/try/runcode.php?filename=date_demo3&type=java)
+```java
+import java.util.Date;
+  
+public class DateDemo {
+ 
+   public static void main(String args[]) {
+       // 初始化 Date 对象
+       Date date = new Date();
+        
+       // 使用toString()显示日期和时间
+       System.out.printf("%1$s %2$tB %2$td, %2$tY", 
+                         "Due date:", date);
+   }
+}
+```
 
 以上实例编译运行结果如下:
 
@@ -177,12 +232,21 @@ Due date: February 09, 2014
 
 或者，你可以使用 < 标志。它表明先前被格式化的参数要被再次使用。例如：
 
-## 实例
-
-import java.util.Date;   public class DateDemo {    public static void main(String args[]) {       // 初始化 Date 对象       Date date = new Date();               // 显示格式化时间       System.out.printf("%s %tB %<te, %<tY",                          "Due date:", date);   } }
-
-
-[运行实例 »](https://www.runoob.com/try/runcode.php?filename=date_demo4&type=java)
+```java
+import java.util.Date;
+  
+public class DateDemo {
+ 
+   public static void main(String args[]) {
+       // 初始化 Date 对象
+       Date date = new Date();
+        
+       // 显示格式化时间
+       System.out.printf("%s %tB %<te, %<tY", 
+                         "Due date:", date);
+   }
+}
+```
 
 以上实例编译运行结果如下:
 
@@ -192,9 +256,40 @@ Due date: February 09, 2014
 
 定义日期格式的转换符可以使日期通过指定的转换符生成新字符串。这些日期转换符如下所示：
 
-## 实例
-
-import java.util.*;   public class DateDemo {   public static void main(String args[]) {       Date date=new Date();                                              //b的使用，月份简称          String str=String.format(Locale.US,"英文月份简称：%tb",date);               System.out.println(str);                                                                                      System.out.printf("本地月份简称：%tb%n",date);          //B的使用，月份全称          str=String.format(Locale.US,"英文月份全称：%tB",date);          System.out.println(str);          System.out.printf("本地月份全称：%tB%n",date);          //a的使用，星期简称          str=String.format(Locale.US,"英文星期的简称：%ta",date);          System.out.println(str);          //A的使用，星期全称          System.out.printf("本地星期的简称：%tA%n",date);          //C的使用，年前两位          System.out.printf("年的前两位数字（不足两位前面补0）：%tC%n",date);          //y的使用，年后两位          System.out.printf("年的后两位数字（不足两位前面补0）：%ty%n",date);          //j的使用，一年的天数          System.out.printf("一年中的天数（即年的第几天）：%tj%n",date);          //m的使用，月份          System.out.printf("两位数字的月份（不足两位前面补0）：%tm%n",date);          //d的使用，日（二位，不够补零）          System.out.printf("两位数字的日（不足两位前面补0）：%td%n",date);          //e的使用，日（一位不补零）          System.out.printf("月份的日（前面不补0）：%te",date);     } }
+```java
+import java.util.*;
+  
+public class DateDemo {
+   public static void main(String args[]) {
+       Date date=new Date();                                      
+        //b的使用，月份简称  
+        String str=String.format(Locale.US,"英文月份简称：%tb",date);       
+        System.out.println(str);                                                                              
+        System.out.printf("本地月份简称：%tb%n",date);  
+        //B的使用，月份全称  
+        str=String.format(Locale.US,"英文月份全称：%tB",date);  
+        System.out.println(str);  
+        System.out.printf("本地月份全称：%tB%n",date);  
+        //a的使用，星期简称  
+        str=String.format(Locale.US,"英文星期的简称：%ta",date);  
+        System.out.println(str);  
+        //A的使用，星期全称  
+        System.out.printf("本地星期的简称：%tA%n",date);  
+        //C的使用，年前两位  
+        System.out.printf("年的前两位数字（不足两位前面补0）：%tC%n",date);  
+        //y的使用，年后两位  
+        System.out.printf("年的后两位数字（不足两位前面补0）：%ty%n",date);  
+        //j的使用，一年的天数  
+        System.out.printf("一年中的天数（即年的第几天）：%tj%n",date);  
+        //m的使用，月份  
+        System.out.printf("两位数字的月份（不足两位前面补0）：%tm%n",date);  
+        //d的使用，日（二位，不够补零）  
+        System.out.printf("两位数字的日（不足两位前面补0）：%td%n",date);  
+        //e的使用，日（一位不补零）  
+        System.out.printf("月份的日（前面不补0）：%te",date);  
+   }
+}
+```
 
 输出结果为：
 
@@ -219,12 +314,30 @@ import java.util.*;   public class DateDemo {   public static void main(String a
 
 SimpleDateFormat 类有一些附加的方法，特别是parse()，它试图按照给定的SimpleDateFormat 对象的格式化存储来解析字符串。例如：
 
-## 实例
-
-import java.util.*; import java.text.*;   public class DateDemo {    public static void main(String args[]) {      SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");        String input = args.length == 0 ? "1818-11-11" : args[0];        System.out.print(input + " Parses as ");        Date t;        try {           t = ft.parse(input);           System.out.println(t);       } catch (ParseException e) {           System.out.println("Unparseable using " + ft);       }   } }
-
-
-[运行实例 »](https://www.runoob.com/try/runcode.php?filename=date_demo5&type=java)
+```java
+import java.util.*;
+import java.text.*;
+  
+public class DateDemo {
+ 
+   public static void main(String args[]) {
+      SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd"); 
+ 
+      String input = args.length == 0 ? "1818-11-11" : args[0]; 
+ 
+      System.out.print(input + " Parses as "); 
+ 
+      Date t; 
+ 
+      try { 
+          t = ft.parse(input); 
+          System.out.println(t); 
+      } catch (ParseException e) { 
+          System.out.println("Unparseable using " + ft); 
+      }
+   }
+}
+```
 
 以上实例编译运行结果如下:
 
@@ -243,12 +356,21 @@ sleep()使当前线程进入停滞状态（阻塞当前线程），让出CPU的�
 
 你可以让程序休眠一毫秒的时间或者到您的计算机的寿命长的任意段时间。例如，下面的程序会休眠3秒：
 
-## 实例
-
-import java.util.*;   public class SleepDemo {   public static void main(String args[]) {      try {          System.out.println(new Date( ) + "\n");          Thread.sleep(1000*3);   // 休眠3秒         System.out.println(new Date( ) + "\n");       } catch (Exception e) {           System.out.println("Got an exception!");       }   } }
-
-
-[运行实例 »](https://www.runoob.com/try/runcode.php?filename=date_demo6&type=java)
+```java
+import java.util.*;
+  
+public class SleepDemo {
+   public static void main(String args[]) {
+      try { 
+         System.out.println(new Date( ) + "\n"); 
+         Thread.sleep(1000*3);   // 休眠3秒
+         System.out.println(new Date( ) + "\n"); 
+      } catch (Exception e) { 
+          System.out.println("Got an exception!"); 
+      }
+   }
+}
+```
 
 以上实例编译运行结果如下:
 
@@ -264,12 +386,26 @@ Thu Sep 17 10:20:33 CST 2015
 
 下面的一个例子表明如何测量时间间隔（以毫秒为单位）：
 
-## 实例
-
-import java.util.*;   public class DiffDemo {    public static void main(String args[]) {      try {         long start = System.currentTimeMillis( );         System.out.println(new Date( ) + "\n");         Thread.sleep(5*60*10);         System.out.println(new Date( ) + "\n");         long end = System.currentTimeMillis( );         long diff = end - start;         System.out.println("Difference is : " + diff);      } catch (Exception e) {         System.out.println("Got an exception!");      }   } }
-
-
-[运行实例 »](https://www.runoob.com/try/runcode.php?filename=date_demo7&type=java)
+```java
+import java.util.*;
+  
+public class DiffDemo {
+ 
+   public static void main(String args[]) {
+      try {
+         long start = System.currentTimeMillis( );
+         System.out.println(new Date( ) + "\n");
+         Thread.sleep(5*60*10);
+         System.out.println(new Date( ) + "\n");
+         long end = System.currentTimeMillis( );
+         long diff = end - start;
+         System.out.println("Difference is : " + diff);
+      } catch (Exception e) {
+         System.out.println("Got an exception!");
+      }
+   }
+}
+```
 
 以上实例编译运行结果如下:
 
@@ -293,7 +429,7 @@ Calendar类是一个抽象类，在实际使用时实现特定的子类的对象
 
 ### 创建一个代表系统当前日期的Calendar对象
 
-```
+```java
 Calendar c = Calendar.getInstance();//默认是当前日期
 ```
 
@@ -301,7 +437,7 @@ Calendar c = Calendar.getInstance();//默认是当前日期
 
 使用Calendar类代表特定的时间，需要首先创建一个Calendar的对象，然后再设定该对象中的年月日参数来完成。
 
-```
+```java
 //创建一个代表2009年6月12日的Calendar对象
 Calendar c1 = Calendar.getInstance();
 c1.set(2009, 6 - 1, 12);
@@ -329,13 +465,13 @@ Calendar类中用以下这些常量表示不同的意义，jdk内的很多类其
 
 如：
 
-```
+```java
 Calendar c1 = Calendar.getInstance();
 ```
 
 调用：
 
-```
+```java
 public final void set(int year,int month,int date)
 c1.set(2009, 6, 12);//把Calendar对象c1的年月日分别设这为：2009、6、12
 ```
@@ -344,19 +480,19 @@ c1.set(2009, 6, 12);//把Calendar对象c1的年月日分别设这为：2009、6�
 
 如果只设定某个字段，例如日期的值，则可以使用如下set方法：
 
-```
+```java
 public void set(int field,int value)
 ```
 
 把 c1对象代表的日期设置为10号，其它所有的数值会被重新计算
 
-```
+```java
 c1.set(Calendar.DATE,10);
 ```
 
 把c1对象代表的年份设置为2008年，其他的所有数值会被重新计算
 
-```
+```java
 c1.set(Calendar.YEAR,2008);
 ```
 
@@ -364,19 +500,19 @@ c1.set(Calendar.YEAR,2008);
 
 **Add设置**
 
-```
+```java
 Calendar c1 = Calendar.getInstance();
 ```
 
 把c1对象的日期加上10，也就是c1也就表示为10天后的日期，其它所有的数值会被重新计算
 
-```
+```java
 c1.add(Calendar.DATE, 10);
 ```
 
 把c1对象的日期减去10，也就是c1也就表示为10天前的日期，其它所有的数值会被重新计算
 
-```
+```java
 c1.add(Calendar.DATE, -10);
 ```
 
@@ -384,7 +520,23 @@ c1.add(Calendar.DATE, -10);
 
 ### Calendar类对象信息的获得
 
-Calendar c1 = Calendar.getInstance(); // 获得年份 int year = c1.get(Calendar.YEAR); // 获得月份 int month = c1.get(Calendar.MONTH) + 1; // 获得日期 int date = c1.get(Calendar.DATE); // 获得小时 int hour = c1.get(Calendar.HOUR_OF_DAY); // 获得分钟 int minute = c1.get(Calendar.MINUTE); // 获得秒 int second = c1.get(Calendar.SECOND); // 获得星期几（注意（这个与Date类是不同的）：1代表星期日、2代表星期1、3代表星期二，以此类推） int day = c1.get(Calendar.DAY_OF_WEEK);
+```java
+Calendar c1 = Calendar.getInstance();
+// 获得年份
+int year = c1.get(Calendar.YEAR);
+// 获得月份
+int month = c1.get(Calendar.MONTH) + 1;
+// 获得日期
+int date = c1.get(Calendar.DATE);
+// 获得小时
+int hour = c1.get(Calendar.HOUR_OF_DAY);
+// 获得分钟
+int minute = c1.get(Calendar.MINUTE);
+// 获得秒
+int second = c1.get(Calendar.SECOND);
+// 获得星期几（注意（这个与Date类是不同的）：1代表星期日、2代表星期1、3代表星期二，以此类推）
+int day = c1.get(Calendar.DAY_OF_WEEK);
+```
 
 ------
 
@@ -438,14 +590,42 @@ Calendar 的getInstance（）方法返回一个默认用当前的语言环境和
 | 26       | **void setTimeZone(TimeZone value)** 用给定时区值设置当前时区。 |
 | 27       | **String toString()** 返回代表日历的字符串。                 |
 
-### 实例
-
-## 实例
-
-import java.util.*;   public class GregorianCalendarDemo {    public static void main(String args[]) {      String months[] = {      "Jan", "Feb", "Mar", "Apr",      "May", "Jun", "Jul", "Aug",      "Sep", "Oct", "Nov", "Dec"};            int year;      // 初始化 Gregorian 日历      // 使用当前时间和日期      // 默认为本地时间和时区      GregorianCalendar gcalendar = new GregorianCalendar();      // 显示当前时间和日期的信息      System.out.print("Date: ");      System.out.print(months[gcalendar.get(Calendar.MONTH)]);      System.out.print(" " + gcalendar.get(Calendar.DATE) + " ");      System.out.println(year = gcalendar.get(Calendar.YEAR));      System.out.print("Time: ");      System.out.print(gcalendar.get(Calendar.HOUR) + ":");      System.out.print(gcalendar.get(Calendar.MINUTE) + ":");      System.out.println(gcalendar.get(Calendar.SECOND));            // 测试当前年份是否为闰年      if(gcalendar.isLeapYear(year)) {         System.out.println("当前年份是闰年");      }      else {         System.out.println("当前年份不是闰年");      }   } }
-
-
-[运行实例 »](https://www.runoob.com/try/runcode.php?filename=date_demo8&type=java)
+```java
+import java.util.*;
+  
+public class GregorianCalendarDemo {
+ 
+   public static void main(String args[]) {
+      String months[] = {
+      "Jan", "Feb", "Mar", "Apr",
+      "May", "Jun", "Jul", "Aug",
+      "Sep", "Oct", "Nov", "Dec"};
+      
+      int year;
+      // 初始化 Gregorian 日历
+      // 使用当前时间和日期
+      // 默认为本地时间和时区
+      GregorianCalendar gcalendar = new GregorianCalendar();
+      // 显示当前时间和日期的信息
+      System.out.print("Date: ");
+      System.out.print(months[gcalendar.get(Calendar.MONTH)]);
+      System.out.print(" " + gcalendar.get(Calendar.DATE) + " ");
+      System.out.println(year = gcalendar.get(Calendar.YEAR));
+      System.out.print("Time: ");
+      System.out.print(gcalendar.get(Calendar.HOUR) + ":");
+      System.out.print(gcalendar.get(Calendar.MINUTE) + ":");
+      System.out.println(gcalendar.get(Calendar.SECOND));
+      
+      // 测试当前年份是否为闰年
+      if(gcalendar.isLeapYear(year)) {
+         System.out.println("当前年份是闰年");
+      }
+      else {
+         System.out.println("当前年份不是闰年");
+      }
+   }
+}
+```
 
 以上实例编译运行结果如下：
 
@@ -454,5 +634,3 @@ Date: Apr 22 2009
 Time: 11:25:27
 当前年份不是闰年
 ```
-
-关于 Calender 类的完整列表，你可以参考标准的 [Java文档](http://www.runoob.com/manual/jdk1.6/)。
